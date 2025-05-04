@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/mia-pagina/static/css/main.722eafe8.css",
-    "main.js": "/mia-pagina/static/js/main.4ed8be60.js",
+    "main.css": "/mia-pagina/static/css/main.f4c12a16.css",
+    "main.js": "/mia-pagina/static/js/main.6cd7a735.js",
     "static/js/453.ca08a529.chunk.js": "/mia-pagina/static/js/453.ca08a529.chunk.js",
-    "static/media/mypic.png": "/mia-pagina/static/media/mypic.7bc14d1a6962c1a3488f.png",
+    "static/media/mypic.jpg": "/mia-pagina/static/media/mypic.ceb242e262ccf983e3e3.jpg",
     "index.html": "/mia-pagina/index.html",
-    "main.722eafe8.css.map": "/mia-pagina/static/css/main.722eafe8.css.map",
-    "main.4ed8be60.js.map": "/mia-pagina/static/js/main.4ed8be60.js.map",
+    "main.f4c12a16.css.map": "/mia-pagina/static/css/main.f4c12a16.css.map",
+    "main.6cd7a735.js.map": "/mia-pagina/static/js/main.6cd7a735.js.map",
     "453.ca08a529.chunk.js.map": "/mia-pagina/static/js/453.ca08a529.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.722eafe8.css",
-    "static/js/main.4ed8be60.js"
+    "static/css/main.f4c12a16.css",
+    "static/js/main.6cd7a735.js"
   ]
 }
