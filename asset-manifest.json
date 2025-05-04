@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/mia-pagina/static/css/main.e6c13ad2.css",
-    "main.js": "/mia-pagina/static/js/main.efb12449.js",
+    "main.css": "/mia-pagina/static/css/main.722eafe8.css",
+    "main.js": "/mia-pagina/static/js/main.4ed8be60.js",
     "static/js/453.ca08a529.chunk.js": "/mia-pagina/static/js/453.ca08a529.chunk.js",
+    "static/media/mypic.png": "/mia-pagina/static/media/mypic.7bc14d1a6962c1a3488f.png",
     "index.html": "/mia-pagina/index.html",
-    "main.e6c13ad2.css.map": "/mia-pagina/static/css/main.e6c13ad2.css.map",
-    "main.efb12449.js.map": "/mia-pagina/static/js/main.efb12449.js.map",
+    "main.722eafe8.css.map": "/mia-pagina/static/css/main.722eafe8.css.map",
+    "main.4ed8be60.js.map": "/mia-pagina/static/js/main.4ed8be60.js.map",
     "453.ca08a529.chunk.js.map": "/mia-pagina/static/js/453.ca08a529.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6c13ad2.css",
-    "static/js/main.efb12449.js"
+    "static/css/main.722eafe8.css",
+    "static/js/main.4ed8be60.js"
   ]
 }
