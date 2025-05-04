@@ -1,11 +1,18 @@
 import MyNav from "./items/Nav";
 import MyProfile from "./items/Profile";
+import "./App.css"
 
 export default function MyApp() {
   return (
-    <div>
+    <div className="foggy-background">
       <MyNav/>
-      <MyProfile/>
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        paddingTop: '2rem'
+      }}>
+        <MyProfile />
+      </div>
     </div>
   );
 }

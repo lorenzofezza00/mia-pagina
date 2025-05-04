@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+@keyframes fogMove {
+  0% { background-position: 0 100%; }
+  100% { background-position: 0 0%; }
+}
+
+.foggy-background {
+  background: linear-gradient(to top, #cceeff 0%, #ffffff 100%);
+  background-size: 100% 200%;
+  animation: fogMove 30s linear infinite;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  z-index: -1;
+}
