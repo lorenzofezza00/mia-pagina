@@ -2,6 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import miaFoto from '../imgs/mypic.jpg';
 import "../App.css"
+import ImmagineInterattiva from "./IntImage.js";
 
 function MyProfile() {
   const happyEmojis = ["｡◕‿◕｡", "q(❂‿❂)p", "(≧◡≦)", "⊂(◉‿◉)つ", "ლ(╹◡╹ლ)", "┗(＾0＾)┓", "(◕‿◕✿)", "(◡‿◡✿)", "(✿◠‿◠)", "(☆^O^☆)", "( ͡ᵔ ͜ʖ ͡°)", "(づ｡◕‿‿◕｡)づ", "(✪ ͜⊃✪)"];
@@ -25,19 +26,7 @@ function MyProfile() {
         </Card.Text>
         <Button variant="primary" style={{ marginTop: '1.25rem' }}>Go to my resume!</Button>
       </Card.Body>
-      <div style={{ flexShrink: 0 }}>
-        <img 
-          src={miaFoto} 
-          alt="Lorenzo Fezza" 
-          style={{
-            width: '300px',
-            height: '300px',
-            borderRadius: '50%',
-            objectFit: 'cover',
-            border: '4px solid #FFF'
-          }} 
-        />
-      </div>
+      <ImmagineInterattiva miaFoto={miaFoto}/>
     </Card>
   );
 }
