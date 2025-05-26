@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import miaFoto from '../imgs/mypic.jpg';
+// import miaFoto from '../imgs/mypic.jpg';
 
 function ImmagineInterattiva({ miaFoto }) {
   const [transformStyle, setTransformStyle] = useState({});
