@@ -43,7 +43,7 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 // import miaFoto from '../imgs/mypic.jpg';
-import randPic from '../imgs/rand.jpg'
+// import randPic from '../imgs/pngegg.png'
 import "../App.css"
 // import ImmagineInterattiva from "./IntImage.js";
 import { Col, Row } from 'react-bootstrap';
@@ -54,21 +54,23 @@ function Welcome() {
 
   return (
     <Row className='d-flex justify-content-center align-items-center'>
-      <Col className="d-flex justify-content-center align-items-center">
-        {/* <ImmagineInterattiva miaFoto={null}/> */}
-        <img
-          src={randPic}
-          alt="Lorenzo Fezza"
-          style={{
-            width: '20vw',}}
-        />
+      <Col
+        className="d-flex justify-content-center align-items-center"
+        style={{
+          position: 'relative',
+          width: '20vw',
+          height: '20vw', // Dai una dimensione esplicita al contenitore
+          overflow: 'visible',
+          // border: '1px solid red' // per debug, puoi rimuoverlo
+        }}
+      >
       </Col>
       <Col>
-        <Card.Title>Hello Everyone!</Card.Title>
-        <Card.Text>
+        <Card.Title className="fw-bold fs-1" >Hello Everyone!</Card.Title>
+        <Card.Text className="fs-5">
           My name is Lorenzo Fezza, I am a Computer Engineer and this is my web-site, I made it for fun <span style={{ color: "yellow" }}>{randomEmoji}</span>! Let's take a look on my resume.
         </Card.Text>
-        <Button variant="primary" style={{ marginTop: '1.25rem' }}>Go to my resume!</Button>  
+        <Button variant="primary" style={{ marginTop: '1.25rem' }}>Check out my resume!</Button>  
       </Col>
     </Row>
   

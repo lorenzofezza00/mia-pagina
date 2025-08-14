@@ -55,3 +55,28 @@
 html {
   scroll-behavior: smooth;
 }
+
+.background-image {
+  position: absolute;
+  top: 20vh;          /* Distanza dall’alto */
+  left: 25%;
+  transform: translateX(-50%); /* Centra orizzontalmente */
+  z-index: 0;
+  opacity: 0.8;
+  pointer-events: none;
+
+  height: 150vh;       /* Altezza responsive */
+  width:auto;
+  /* max-width: 90vw;    Limita larghezza massima su schermi piccoli */
+}
+
+
+.content-layer {
+  position: relative;
+  z-index: 1;
+}
+
+.App {
+  background-color: #121212;
+  color: white
+}

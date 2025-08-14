@@ -26,6 +26,8 @@ function MyNav() {
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4" className="fs-5 fs-sm-6">Project 4</NavDropdown.Item>
             </NavDropdown>
+
+            <Nav.Link href="#contacts" className="fs-5 fs-sm-6">Contacts</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

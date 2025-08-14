@@ -17,7 +17,7 @@ function ProjectsCarousel() {
           src={randPic2}
           alt="Lorenzo Fezza"
           style={{
-            width: '80vw', opacity: 0.1,}}
+            width: '80vw', opacity: 0.9,}}
         />
         {/* <h1>First slide</h1> */}
         {/* <ExampleCarouselImage text="First slide" /> */}
@@ -31,7 +31,7 @@ function ProjectsCarousel() {
           src={randPic2}
           alt="Lorenzo Fezza"
           style={{
-            width: '80vw', opacity: 0.1,}}
+            width: '80vw', opacity: 0.9,}}
         />
         {/* <ExampleCarouselImage text="Second slide" /> */}
         {/* <h1>Second slide</h1> */}
@@ -45,7 +45,7 @@ function ProjectsCarousel() {
           src={randPic2}
           alt="Lorenzo Fezza"
           style={{
-            width: '80vw', opacity: 0.1,}}
+            width: '80vw', opacity: 0.9,}}
         />
         {/* <ExampleCarouselImage text="Third slide" /> */}
         {/* <h1>Third slide</h1> */}
