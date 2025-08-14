@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'SuperWoobly';
+  src: local('SuperWoobly'), url('./fonts/SuperWoobly-8MJlz.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

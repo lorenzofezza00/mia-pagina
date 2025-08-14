@@ -1,117 +1,156 @@
-// import MyNav from "./items/MyNav";
-// import Welcome from "./items/Welcome";
-// import About from "./items/About";
 // import "./App.css";
-// import { Col, Container } from 'react-bootstrap';
-// import ProjectsCarousel from "./items/ProjectsCarousel";
-// import randPic from "./imgs/pngegg.png"
 
 // export default function MyApp() {
 //   return (
-//     <div className="App" style={{ backgroundColor: '#121212', minHeight: '100vh', color: 'white' }}>
-//       {/* Background image */}
-//       <img 
-//         src={randPic}
-//         alt="Background decoration"
-//         className="background-image"
-//       />
-
-//       {/* Content */}
-//       <div className="content-layer">
-//         <section id="welcome" style={{ minHeight: "100vh" }}>
-//           <div style={{ height: "10vh", color: "white" }}>
-//             <MyNav/>
-//           </div>
-//           <div style={{ height: "90vh", color: "white" }}>
-//             <Container className="d-flex justify-content-center align-items-center h-100">
-//               <Welcome/>  
-//             </Container>
-//           </div>
-//         </section>
-//         <section id="about" style={{ minHeight: "100vh" }}>
-//           <div style={{ height: "90vh", color: "white" }}>
-//             <Container className="d-flex justify-content-center align-items-center h-100">
-//               <About/>
-//             </Container>
-//           </div>
-//         </section>
-//         <section id="projects" style={{ minHeight: "100vh" }}>
-//           <div style={{ height: "90vh", color: "white" }}>
-//               <Container className="d-flex justify-content-center align-items-center h-100">
-//                 <Col>
-//                   <h1>Projects</h1>
-//                   <ProjectsCarousel/>
-//                 </Col>  
-//               </Container>
-//           </div>  
-//         </section>
-//         <div style={{
-//           display: 'flex',
-//           justifyContent: 'center',
-//           paddingTop: '8rem'
-//         }}>
-//         </div>
-//       </div>
+//     <div className="App">
+//       <h1>HELLO</h1>
 //     </div>
 //   );
 // }
 
-// MyApp.jsx
+// App.js
+// import React, { useEffect } from "react";
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
-import MyNav from "./items/MyNav";
-import Welcome from "./items/Welcome";
-import About from "./items/About";
-import ProjectsCarousel from "./items/ProjectsCarousel";
-import { Col, Container } from "react-bootstrap";
-import randPic from "./imgs/pngegg.png";
-import "./App.css";
+// function App() {
+//   useEffect(() => {
+//     const cursors = [
+//       "/cursors/Beeb.cur",
+//       "/cursors/Cig.ani",
+//       "/cursors/HannahMontana.cur",
+//       "/cursors/RainbowDinosaaur.cur"
+//     ];
 
-// Componenti helper per sezioni
-function Section({ id, children }) {
+//     const randomCursor = cursors[Math.floor(Math.random() * cursors.length)];
+
+//     // Imposta il cursore globale
+//     document.body.style.cursor = `url(${randomCursor}), auto`;
+//   }, []);
+
+//   return (
+//     <div className="container">
+//       <h1 className="mt-5">Ciao! Ho un cursore casuale 🎯</h1>
+//       <p>Ricarica la pagina per vedere un nuovo cursore!</p>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+import React, { useEffect, useState, useRef } from 'react';
+import { Container, Row} from 'react-bootstrap';
+import MyNav from './items/MyNav';
+import BackgroundNetwork from './items/BackgroundNetwork';
+import HeroText from './items/HeroText';
+import TrailSquares from './items/TrailSquares';
+import IntroText from './items/IntroText';
+
+function App() {
+  const hiRef = useRef(null);
+  const [randoms, setRandoms] = useState([]);
+  const text = "Schiüma";
+  // funzione per generare spostamenti casuali
+  const randomOffset = () => ({
+    transform: `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px) rotate(${Math.random() * 10 - 5}deg)`,
+    display: 'inline-block',
+  });
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Appare uno dopo l'altro
+            for (let i = 0; i < 10; i++) {
+              setTimeout(() => {
+                const x = Math.random() * (window.innerWidth - 50);
+                const y = Math.random() * (window.innerHeight - 50);
+                setRandoms((prev) => [...prev, { id: Date.now() + i, x, y }]);
+              }, i * 300);
+            }
+          } else {
+            // Esci dal container -> cancella tutto
+            setRandoms([]);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (hiRef.current) {
+      observer.observe(hiRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id={id} className="app-section">
-      <Container className="d-flex justify-content-center align-items-center h-100">
-        {children}
-      </Container>
-    </section>
-  );
-}
-
-export default function MyApp() {
-  return (
-    <div className="App">
-      {/* Background */}
-      <img src={randPic} alt="Background decoration" className="background-image" />
-
-      {/* Overlay contenuti */}
-      <div className="content-layer">
-        {/* Navbar persistente */}
-        <header className="nav-wrapper">
-          <MyNav />
-        </header>
-
-        {/* Sezioni */}
-        <Section id="welcome">
-          <Welcome />
-        </Section>
-
-        <Section id="about">
-          <About />
-        </Section>
-
-        <Section id="projects">
-          <Col>
-            <h1>Projects</h1>
-            <ProjectsCarousel />
-          </Col>
-        </Section>
+    
+    <div>
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          zIndex: 10,
+        }}
+      >
+        <MyNav />
       </div>
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        paddingTop: '8rem'
-      }}>
+      <div
+        style={{
+          height: "100vh",
+          backgroundColor: "#121212",
+          color: "#fff",
+          transition: "all 0.3s ease",
+        }}
+      >
+        <HeroText/>
       </div>
+
+      <div
+        style={{
+          height: "100vh",
+          color: "#fff",
+          backgroundColor: "#121212",
+          transition: "all 0.3s ease",
+          position: "relative",
+        }}
+      >
+        <Container
+          ref={hiRef}
+          className="d-flex flex-column justify-content-center align-items-center"
+          style={{ height: "100%" }}
+        >
+          <IntroText/>
+          {/* {randoms.map((r) => (
+            <div
+              key={r.id}
+              style={{
+                position: "absolute",
+                top: r.y,
+                left: r.x,
+                color: "white",
+                fontSize: "2em",
+                fontFamily: 'SuperWoobly', // <-- qui usi il font
+                opacity: 0.5,
+              }}
+            >
+              {text.split("").map((char, index) => (
+              <span key={index} style={randomOffset()}>
+                {char}
+              </span>
+            ))}
+            </div>
+          ))} */}
+        </Container>
+      </div>
+      
+      <BackgroundNetwork />
+      <TrailSquares/>
     </div>
   );
 }
+
+export default App;

@@ -1,0 +1,30 @@
+.intro-sentence {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin: 1.5rem 0;
+  opacity: 0;
+  transition: all 0.8s ease-out;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.fade-in-left {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-in-right {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* iniziale posizione fuori schermo */
+.intro-sentence.fade-in-left {
+  transform: translateX(-50px);
+}
+
+.intro-sentence.fade-in-right {
+  transform: translateX(50px);
+}
