@@ -48,12 +48,12 @@ const SentenceBoxes = () => {
         <Row
           key={index}
           className="d-flex align-items-center"
-          style={{ minHeight: "90vh", backgroundColor: "transparent" }}
+          style={{ minHeight: "100vh", backgroundColor: "transparent" }}
         >
           <Col
             md={{ span: 6, offset: index % 2 === 0 ? 0 : 6 }}
             className={`text-${index % 2 === 0 ? "start" : "end"}`}
-            style={{ paddingLeft: "5rem", paddingRight: "5rem" }}
+            // style={{ paddingLeft: "5rem", paddingRight: "5rem" }}
           >
             <div
             ref={(el) => (refs.current[index] = el)}

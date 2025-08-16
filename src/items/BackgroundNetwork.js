@@ -9,7 +9,8 @@ export default function BackgroundNetwork() {
     const initParticles = async () => {
       await loadFull(tsParticles);
       tsParticles.load(particlesRef.current.id, {
-        background: { color: "transparent" },
+        background: { color: "#121212" },
+        // background: { color: "transparent" },
         particles: {
           number: { value: 50, density: { enable: true, area: 800 } },
           color: { value: "#ffffff" },
