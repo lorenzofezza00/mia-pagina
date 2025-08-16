@@ -44,6 +44,7 @@ import BackgroundNetwork from './items/BackgroundNetwork';
 import HeroText from './items/HeroText';
 import TrailSquares from './items/TrailSquares';
 import IntroText from './items/IntroText';
+import SentenceBoxes from './items/IntroText';
 
 function App() {
   const hiRef = useRef(null);
@@ -118,37 +119,12 @@ function App() {
           position: "relative",
         }}
       >
-        <Container
-          ref={hiRef}
-          className="d-flex flex-column justify-content-center align-items-center"
-          style={{ height: "100%" }}
-        >
-          <IntroText/>
-          {/* {randoms.map((r) => (
-            <div
-              key={r.id}
-              style={{
-                position: "absolute",
-                top: r.y,
-                left: r.x,
-                color: "white",
-                fontSize: "2em",
-                fontFamily: 'SuperWoobly', // <-- qui usi il font
-                opacity: 0.5,
-              }}
-            >
-              {text.split("").map((char, index) => (
-              <span key={index} style={randomOffset()}>
-                {char}
-              </span>
-            ))}
-            </div>
-          ))} */}
-        </Container>
+        <div style={{ color: "#fff", backgroundColor: "#121212", position: "relative" }}>
+          <SentenceBoxes/>
+        </div>
       </div>
-      
-      <BackgroundNetwork />
       <TrailSquares/>
+      <BackgroundNetwork />
     </div>
   );
 }

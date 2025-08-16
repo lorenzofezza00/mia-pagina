@@ -13,13 +13,13 @@ const TrailSquares = () => {
     const squares = [];
 
     const getRandomColor = () =>
-      `hsl(${Math.random() * 360}, 70%, 60%)`;
+      `hsl(${Math.random() * 360}, 80%, 60%)`;
 
     const getRandomSize = () =>
       Math.random() * 10 + 3; // 3-13px, più piccoli
 
     const handleMouseMove = (e) => {
-      if (Math.random() < 0.3) { // 30% di probabilità
+      if (Math.random() < 0.9) { // 30% di probabilità
         squares.push({
           x: e.clientX,
           y: e.clientY,

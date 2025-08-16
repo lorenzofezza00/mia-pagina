@@ -1,30 +1,14 @@
-.intro-sentence {
-  font-size: 1.25rem;
-  line-height: 1.6;
-  margin: 1.5rem 0;
+.sentence-box {
   opacity: 0;
+  transform: translateX(50px); /* inizialmente spostato a destra */
   transition: all 0.8s ease-out;
 }
 
-.hidden {
-  opacity: 0;
+.sentence-box.left {
+  transform: translateX(-50px); /* inizialmente spostato a sinistra */
 }
 
-.fade-in-left {
+.sentence-box.visible {
   opacity: 1;
-  transform: translateX(0);
-}
-
-.fade-in-right {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* iniziale posizione fuori schermo */
-.intro-sentence.fade-in-left {
-  transform: translateX(-50px);
-}
-
-.intro-sentence.fade-in-right {
-  transform: translateX(50px);
+  transform: translateX(0); /* torna in posizione */
 }

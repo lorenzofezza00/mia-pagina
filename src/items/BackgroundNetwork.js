@@ -38,16 +38,17 @@ export default function BackgroundNetwork() {
 
   return (
     <div
-      id="tsparticles"
-      ref={particlesRef}
-      style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        zIndex: 0
-      }}
-    />
+    id="tsparticles"
+    ref={particlesRef}
+    style={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: `${document.body.scrollHeight}px`, // altezza reale del body
+      zIndex: 0,
+    }}
+  />
+
   );
 }
