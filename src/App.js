@@ -8,6 +8,8 @@ import SentenceBoxes from './items/IntroText';
 import Home from './items/Home'
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Container } from 'react-bootstrap';
+import About from './items/About';
+
 
 function App() {
   return (
@@ -24,7 +26,10 @@ function App() {
         <Container className="py-4" style={{ position: "relative", zIndex: 5 }}>
           <Routes>
             <Route path="/" element={<Home />} />
-            {/* <Route path="/about" element={<About />} /> */}
+            <Route path="/home" element={<Home />} />
+            <Route path="/mia-pagina" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            
           </Routes>
         </Container>
 

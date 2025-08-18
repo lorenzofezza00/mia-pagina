@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './fonts/SuperWoobly-8MJlz.ttf'
+import "leaflet/dist/leaflet.css";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
