@@ -6,10 +6,10 @@ import BackgroundNetwork from "./BackgroundNetwork";
 const sentences = [
   <>
     This site is your gateway to learn more about me. Explore the{" "}
-    <a href="/about" style={{ color: "inherit", textDecoration: "underline" }}>About</a>,{" "}
-    <a href="/resume" style={{ color: "inherit", textDecoration: "underline" }}>Resume</a>,{" "}
-    <a href="/projects" style={{ color: "inherit", textDecoration: "underline" }}>Projects</a>, and{" "}
-    <a href="/contact" style={{ color: "inherit", textDecoration: "underline" }}>Contact</a> sections to discover the details of who I am and what I do.
+    <a href="#/about" style={{ color: "inherit", textDecoration: "underline" }}>About</a>,{" "}
+    <a href="#/resume" style={{ color: "inherit", textDecoration: "underline" }}>Resume</a>,{" "}
+    <a href="#/projects" style={{ color: "inherit", textDecoration: "underline" }}>Projects</a>, and{" "}
+    <a href="#/contact" style={{ color: "inherit", textDecoration: "underline" }}>Contact</a> sections to discover the details of who I am and what I do.
   </>,
   "Each section tells a piece of my story, from my background and experiences to the projects that inspire me.",
   "Take your time to navigate through the pages — every click connects the dots and reveals more about my journey.",

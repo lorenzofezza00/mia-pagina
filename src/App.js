@@ -1,21 +1,19 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React from 'react';
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { Container } from 'react-bootstrap';
+
 import MyNav from './items/MyNav';
 import BackgroundNetwork from './items/BackgroundNetwork';
-import HeroText from './items/HeroText';
 import TrailSquares from './items/TrailSquares';
-import IntroText from './items/IntroText';
-import SentenceBoxes from './items/IntroText';
-import Home from './items/Home'
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { Container } from 'react-bootstrap';
+import Home from './items/Home';
 import About from './items/About';
-
 
 function App() {
   return (
     <div style={{ minHeight: "100vh", position: "relative" }}>
-      <BackgroundNetwork /> {/* sfondo con particles */}
-      
+      {/* Sfondo con particles */}
+      <BackgroundNetwork />
+
       <Router>
         {/* Navbar normale, scorre con la pagina */}
         <div style={{ position: "relative", zIndex: 10 }}>
@@ -29,7 +27,6 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/mia-pagina" element={<Home />} />
             <Route path="/about" element={<About />} />
-            
           </Routes>
         </Container>
 
@@ -39,6 +36,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;

@@ -3,9 +3,10 @@ import React, { useEffect, useRef } from "react";
 import "./IntroAnimations.css";
 
 const sentences = [
-  "Growing up with a convent education taught me the value of altruism, openness, and curiosity. Music has always been a big part of my life: I studied piano for many years, and today I’m drawn to electronic music.",
+  "Growing up with a convent education taught me the value of altruism, openness, and curiosity.",
+  "Music has always been a big part of my life: I studied piano for many years, and today I’m drawn to electronic music.",
   "After high school in Ortona, I moved to Turin for university, and with the support of scholarships, I earned my degree.",
-  "I love my family and dream of turning my dad’s countryside house into a special place to share experiences, music, and creativity.",
+  "I love my family and dream of turning my countryside house into a special place to share experiences, music, and creativity.",
 ];
 
 const RightSentenceBoxes = () => {
