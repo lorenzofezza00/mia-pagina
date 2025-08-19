@@ -3,11 +3,13 @@ import { MapContainer, TileLayer, Marker, Polyline, useMap } from "react-leaflet
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { Container } from "react-bootstrap";
-import RightSentenceBoxes from "./RightSentenceBoxes";
+import RightSentenceBoxes from './RightSentenceBoxes'
 
 // Coordinate
 const ortona = [42.35, 14.4];
 const torino = [45.07, 7.69];
+const laCoruna = [43.3623, -8.4115];
+const edinburgh = [55.9533, -3.1883];
 
 // Emoji marker icons
 function useEmojiIcon(emoji) {
@@ -32,108 +34,180 @@ function lerp(a, b, t) {
 function parabola(a, b, t, height = 2) {
   const x = lerp(a[1], b[1], t); // lng
   const y = lerp(a[0], b[0], t); // lat
-  // parabola offset
   const offset = -4 * height * (t - 0.5) ** 2 + height;
   return [y + offset, x];
 }
 
-// Hook per aggiornare centro e zoom
+// Animazione parabola Ortona → Torino
 function AnimateMap({ t }) {
   const map = useMap();
-  const current = parabola(ortona, torino, t, 2); // lat,lng
-  const zoom = lerp(8, 10, t); // da Ortona a Torino più zoom
+  const current = parabola(ortona, torino, t, 2);
+  const zoom = lerp(8, 10, t);
   useEffect(() => {
     map.setView(current, zoom, { animate: false });
   }, [current, zoom, map]);
   return null;
 }
 
-function ScrollMap() {
+// Animazione zoom out verso La Coruña e Edimburgo
+function AnimateMapZoomOut({ t }) {
+  const map = useMap();
+  const centerLat = lerp(torino[0], (laCoruna[0] + edinburgh[0]) / 2, t);
+  const centerLng = lerp(torino[1], (laCoruna[1] + edinburgh[1]) / 2, t);
+  const zoom = lerp(10, 3, t);
+  useEffect(() => {
+    map.setView([centerLat, centerLng], zoom, { animate: false });
+  }, [centerLat, centerLng, zoom, map]);
+  return null;
+}
+
+function ScrollMap({ sentence3Ref }) {
   const homeIcon = useEmojiIcon("🏠");
   const pinIcon = useEmojiIcon("📍");
-  const [t, setT] = useState(0);
 
-  // Leggi scroll verticale e converti in t (0-1)
+  const [t, setT] = useState(0);
+  const [scrollRange, setScrollRange] = useState(null);
+
+  const [tZoomOut, setTZoomOut] = useState(0);
+  const [scrollRangeZoomOut, setScrollRangeZoomOut] = useState(null);
+
+  const [torinoHold, setTorinoHold] = useState(false);
+  const [scrollRangeHold, setScrollRangeHold] = useState(null);
+
+  // Calcola intervalli scroll
+  useEffect(() => {
+    if (sentence3Ref?.current) {
+      const el = sentence3Ref.current.getSentenceRef(2);
+      if (el) {
+        const offset = 400;
+        const start = Math.max(0, el.offsetTop - offset);
+        const end = el.offsetTop + el.offsetHeight - 600;
+        setScrollRange({ start, end });
+
+        // Fase di “fermo su Torino” subito dopo parabola
+        const holdStart = end + 50;
+        const holdEnd = holdStart + 300; // durata fase ferma
+        setScrollRangeHold({ start: holdStart, end: holdEnd });
+
+        // Intervallo zoom out subito dopo fase ferma
+        const zoomStart = holdEnd // + 50;
+        const zoomEnd = zoomStart + 300;
+        setScrollRangeZoomOut({ start: zoomStart, end: zoomEnd });
+      }
+    }
+  }, [sentence3Ref]);
+
+  // Gestione scroll
   useEffect(() => {
     const handleScroll = () => {
-      const maxScroll = document.body.scrollHeight - window.innerHeight;
       const scrollPos = window.scrollY;
-      setT(Math.min(1, Math.max(0, scrollPos / maxScroll)));
+
+      // Parabola Ortona → Torino
+      if (scrollRange) {
+        if (scrollPos <= scrollRange.start) setT(0);
+        else if (scrollPos >= scrollRange.end) setT(1);
+        else {
+          const relativeScroll = scrollPos - scrollRange.start;
+          const availableScroll = scrollRange.end - scrollRange.start;
+          setT(relativeScroll / availableScroll);
+        }
+      }
+
+      // Fase ferma su Torino
+      if (scrollRangeHold) {
+        if (scrollPos <= scrollRangeHold.start) setTorinoHold(false);
+        else if (scrollPos >= scrollRangeHold.start && scrollPos <= scrollRangeHold.end) setTorinoHold(true);
+        else setTorinoHold(false);
+      }
+
+      // Zoom out verso La Coruña + Edimburgo
+      if (scrollRangeZoomOut) {
+        if (scrollPos <= scrollRangeZoomOut.start) setTZoomOut(0);
+        else if (scrollPos >= scrollRangeZoomOut.end) setTZoomOut(1);
+        else {
+          const relativeScroll = scrollPos - scrollRangeZoomOut.start;
+          const availableScroll = scrollRangeZoomOut.end - scrollRangeZoomOut.start;
+          setTZoomOut(relativeScroll / availableScroll);
+        }
+      }
     };
+
     window.addEventListener("scroll", handleScroll);
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [scrollRange, scrollRangeHold, scrollRangeZoomOut]);
 
-  // Genera parabola per polyline
+  // Polyline parabola
   const points = useMemo(() => {
     const steps = 50;
     const arr = [];
-    const maxStep = Math.round(steps * t); // massimo step da disegnare
+    const maxStep = Math.round(steps * t);
     for (let i = 0; i <= maxStep; i++) {
-        arr.push(parabola(ortona, torino, i / steps, 2));
+      arr.push(parabola(ortona, torino, i / steps, 2));
     }
     return arr;
-    }, [t]);
+  }, [t]);
 
-
+  // Render map
   return (
-    <>
-      {/* Piccola pagina con un po’ di scroll */}
-      <div>
-        <div
-          style={{
-            position: "fixed",
-            // top: 20,
-            // right: 20,
-            width: "100vh",
-            height: "50vh",
-            border: "2px solid #333",
-            zIndex: 999,
-          }}
-        >
-          <MapContainer
-            center={ortona}
-            zoom={8}
-            style={{ width: "100%", height: "100%" }}
-            dragging={false}
-            zoomControl={false}
-            scrollWheelZoom={false}
-            doubleClickZoom={false}
-            attributionControl={false}
-          >
-            <TileLayer
-            url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors &copy; <a href="https://carto.com/">CARTO</a>'
-            />
+    <div
+      style={{
+        position: "fixed",
+        width: "50vw",
+        height: "80vh",
+        zIndex: 999,
+        overflow: "hidden",
+        WebkitMaskImage: `
+          linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%),
+          linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)
+        `,
+        WebkitMaskComposite: "destination-in",
+        maskComposite: "intersect",
+      }}
+    >
+      <MapContainer
+        center={ortona}
+        zoom={8}
+        style={{ width: "100%", height: "100%" }}
+        dragging={false}
+        zoomControl={false}
+        scrollWheelZoom={false}
+        doubleClickZoom={false}
+        attributionControl={false}
+      >
+        <TileLayer
+          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors &copy; <a href="https://carto.com/">CARTO</a>'
+        />
+        {!torinoHold && <AnimateMap t={t} />}
+        {torinoHold && <AnimateMap t={1} />} {/* fermo su Torino */}
+        <AnimateMapZoomOut t={tZoomOut} />
 
-            <AnimateMap t={t} />
-            <Marker position={ortona} icon={homeIcon} />
-            <Marker position={torino} icon={pinIcon} />
-            <Polyline
-              positions={points}
-              pathOptions={{ color: "red", weight: 3, dashArray: "10,8" }}
-            />
-          </MapContainer>
-        </div>
-      </div>
-    </>
+        <Marker position={ortona} icon={homeIcon} />
+        <Marker position={torino} icon={pinIcon} />
+        {tZoomOut > 0 && <Marker position={laCoruna} icon={pinIcon} />}
+        {tZoomOut > 0 && <Marker position={edinburgh} icon={pinIcon} />}
+        <Polyline positions={points} pathOptions={{ color: "red", weight: 3, dashArray: "10,8" }} />
+      </MapContainer>
+    </div>
   );
 }
 
+
+
 function About() {
-    return (
-        <>
-        <Container fluid className="text-light" style={{ marginTop: "15vh", display: "flex" }}>
-            <div style={{ width: "400px", position: "fixed" }}>
-                <ScrollMap />
-            </div>
-            <div style={{ flex: 1, marginLeft: "420px" }}>
-                <RightSentenceBoxes />
-            </div>
-        </Container>
-        </>
-    );
+  const rightBoxesRef = useRef(null);
+
+  return (
+    <Container fluid className="text-light" style={{ display: "flex" }}>
+      <div style={{ width: "50vw", position: "fixed" }}>
+        <ScrollMap sentence3Ref={rightBoxesRef} />
+      </div>
+      <div style={{ flex: 1, marginLeft: "25vw" }}>
+        <RightSentenceBoxes ref={rightBoxesRef} />
+      </div>
+    </Container>
+  );
 }
 
 export default About
