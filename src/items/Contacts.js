@@ -1,36 +1,36 @@
 // ContactPage.jsx
 import React from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import { FaEnvelope, FaLinkedin, FaInstagram, FaFacebook } from 'react-icons/fa';
+import { FaEnvelope, FaLinkedin, FaInstagram, FaFacebook, FaUniversity } from 'react-icons/fa';
 
 const contacts = [
   {
     type: 'Email',
-    value: 'your.email@example.com',
+    value: 'lorenzo.fezza00@gmail.com',
     icon: <FaEnvelope />,
-    link: 'mailto:your.email@example.com',
+    link: 'mailto:lorenzo.fezza00@gmail.com',
     color: '#D44638',
   },
   {
     type: 'LinkedIn',
-    value: 'your-linkedin-profile',
+    value: 'Lorenzo Fezza',
     icon: <FaLinkedin />,
-    link: 'https://www.linkedin.com/in/your-linkedin-profile/',
+    link: 'https://www.linkedin.com/in/lorenzo-fezza-33aa122a6',
     color: '#0077B5',
   },
   {
     type: 'Instagram',
-    value: '@yourinstagram',
+    value: '@schiuma_da_barbie',
     icon: <FaInstagram />,
-    link: 'https://www.instagram.com/yourinstagram/',
+    link: 'https://www.instagram.com/schiuma_da_barbie/',
     color: '#E1306C',
   },
   {
-    type: 'Facebook',
-    value: 'your-facebook-profile',
-    icon: <FaFacebook />,
-    link: 'https://www.facebook.com/your-facebook-profile/',
-    color: '#1877F2',
+    type: 'PoliTO',
+    value: 'Lorenzo Fezza',
+    icon: <FaUniversity />,
+    link: 'https://www.polito.it/personale?p=lorenzo.fezza',
+    color: 'rgba(0, 43, 73, .9)',
   },
 ];
 
@@ -41,7 +41,15 @@ const ContactPage = () => {
       <Row className="g-4 justify-content-center">
         {contacts.map((contact, idx) => (
           <Col key={idx} xs={12} sm={6} md={4} lg={3}>
-            <Card className="text-center h-100 shadow-sm" style={{ borderTop: `5px solid ${contact.color}` }}>
+            <Card className="text-center h-100 shadow-sm" style={{ 
+              color:'white',
+              backgroundColor: "rgba(255, 255, 255, 0.3)",
+              border: "1px solid rgba(255,255,255,0.5)",
+              borderTop: `5px solid ${contact.color}`,
+              backdropFilter: "blur(8px)",
+              WebkitBackdropFilter: "blur(8px)",
+              padding: "2rem"
+           }}>
               <Card.Body>
                 <div style={{ fontSize: '2rem', color: contact.color }}>{contact.icon}</div>
                 <Card.Title className="mt-3">{contact.type}</Card.Title>

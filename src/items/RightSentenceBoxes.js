@@ -81,7 +81,7 @@ const sentences = [
       <Button
         variant="primary"
         size="sm"
-        href="https://www.paypal.com/donate?hosted_button_id=TUO_ID_BOTTONE"
+        href="https://www.paypal.com/pools/c/9hBPBLauM2"
         target="_blank"
         rel="noopener noreferrer"
       >
