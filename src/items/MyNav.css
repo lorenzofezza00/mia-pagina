@@ -1,0 +1,8 @@
+.dropdown-menu {
+  min-width: 300px;       /* allarga il menu per avere più spazio */
+}
+
+.dropdown-item {
+  white-space: normal !important;  /* forza a capo */
+  word-wrap: break-word;           /* spezza parole troppo lunghe */
+}
