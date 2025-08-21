@@ -1,17 +1,18 @@
 {
   "files": {
-    "main.css": "/mia-pagina/static/css/main.44856951.css",
-    "main.js": "/mia-pagina/static/js/main.a41c31d9.js",
+    "main.css": "/mia-pagina/static/css/main.12d8371a.css",
+    "main.js": "/mia-pagina/static/js/main.a186f265.js",
     "static/js/453.ca08a529.chunk.js": "/mia-pagina/static/js/453.ca08a529.chunk.js",
     "static/media/HomeEZW.png": "/mia-pagina/static/media/HomeEZW.cd08a5bcb19cc30b1399.png",
     "static/media/SuperWoobly-8MJlz.ttf": "/mia-pagina/static/media/SuperWoobly-8MJlz.a925bc69c4414a315372.ttf",
+    "static/media/SMPR.jpg": "/mia-pagina/static/media/SMPR.0d41ea1d1fe63651e1af.jpg",
     "index.html": "/mia-pagina/index.html",
-    "main.44856951.css.map": "/mia-pagina/static/css/main.44856951.css.map",
-    "main.a41c31d9.js.map": "/mia-pagina/static/js/main.a41c31d9.js.map",
+    "main.12d8371a.css.map": "/mia-pagina/static/css/main.12d8371a.css.map",
+    "main.a186f265.js.map": "/mia-pagina/static/js/main.a186f265.js.map",
     "453.ca08a529.chunk.js.map": "/mia-pagina/static/js/453.ca08a529.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.44856951.css",
-    "static/js/main.a41c31d9.js"
+    "static/css/main.12d8371a.css",
+    "static/js/main.a186f265.js"
   ]
 }
