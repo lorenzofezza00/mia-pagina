@@ -4,6 +4,9 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { Container } from "react-bootstrap";
 import RightSentenceBoxes from './RightSentenceBoxes'
+import { FiHome, FiMapPin } from "react-icons/fi";
+import { renderToString } from "react-dom/server";
+
 
 // Coordinate
 const ortona = [42.35, 14.4];
@@ -61,9 +64,26 @@ function AnimateMapZoomOut({ t }) {
   return null;
 }
 
+function useReactIcon(IconComponent) {
+  return useMemo(
+    () =>
+      L.divIcon({
+        html: `<div style="font-size:24px; color:white;">${renderToString(<IconComponent />)}</div>`,
+        className: "",
+        iconSize: [24, 24],
+        iconAnchor: [12, 24], // punta alla base dell'icona
+      }),
+    [IconComponent]
+  );
+}
+
+
+
 function ScrollMap({ sentence3Ref }) {
-  const homeIcon = useEmojiIcon("🏠");
-  const pinIcon = useEmojiIcon("📍");
+  // const homeIcon = useEmojiIcon("🏠");
+  // const pinIcon = useEmojiIcon("📍");
+  const homeIcon = useReactIcon(FiHome);
+  const pinIcon = useReactIcon(FiMapPin);
 
   const [t, setT] = useState(0);
   const [scrollRange, setScrollRange] = useState(null);

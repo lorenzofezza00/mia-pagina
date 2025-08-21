@@ -1,6 +1,9 @@
 import React, { useEffect, useState, useRef, forwardRef, useImperativeHandle } from "react";
 import { Button } from "react-bootstrap";
 import "./IntroAnimations.css";
+import { FaMusic, FaStar } from "react-icons/fa"; 
+import { getAlignment, getFontSize } from "./NewIntroText";
+
 
 const HighlightSentence = () => {
   const [floatingElements, setFloatingElements] = useState([]);
@@ -20,16 +23,16 @@ const HighlightSentence = () => {
 
     for (let i = 0; i < 12; i++) {
       const pos = getPerimeterPosition();
-      const dx = (Math.random() - 0.5) * 200; // distanza movimento
+      const dx = (Math.random() - 0.5) * 200;
       const dy = (Math.random() - 0.5) * 200;
-      const duration = Math.random() * 3 + 3; // tra 3 e 6 secondi
+      const duration = Math.random() * 3 + 3;
       elements.push({
         type: Math.random() > 0.5 ? "note" : "star",
         left: pos.left,
         top: pos.top,
         dx,
         dy,
-        color: `hsl(${Math.random() * 360}, 80%, 70%)`,
+        color: Math.random() > 0.5 ? `hsl(${Math.random() * 360}, 80%, 60%)` : "#FFD700", // note rainbow, stars yellow
         size: Math.random() * 20 + 10,
         duration
       });
@@ -51,17 +54,18 @@ const HighlightSentence = () => {
             top: el.top,
             '--dx': `${el.dx}px`,
             '--dy': `${el.dy}px`,
-            color: el.color,
+            color: el.type === "star" ? "#FFD700" : el.color,
             fontSize: `${el.size}px`,
             animationDuration: `${el.duration}s`
           }}
         >
-          {el.type === "note" ? "🎵" : "⭐"}
+          {el.type === "note" ? <FaMusic /> : <FaStar />}
         </div>
       ))}
     </div>
   );
 };
+
 
 
 const sentences = [
@@ -70,8 +74,8 @@ const sentences = [
 
   <>
     After high school in Ortona, I moved to Turin for university at{" "}
-    <a href="https://www.polito.it/en" style={{ color: "inherit", textDecoration: "underline" }}>PoliTO</a>,{" "}
-    and with the support of scholarships, I earned my bachelor and master degree in{" "}
+    <a href="https://www.polito.it/en" style={{ color: "inherit", textDecoration: "underline" }}>PoliTO.</a>
+    With the support of scholarships (EDISU), I earned my bachelor and master degree in{" "}
     <a href="https://www.polito.it/en/education/master-s-degree-programmes/computer-engineering" style={{ color: "inherit", textDecoration: "underline" }}>computer engineering</a>.
   </>,
   "I also love traveling: I spent time in La Coruña for an Erasmus+ program and in Edinburgh for a study trip during high school, in addition to exploring countless places across Italy.",
@@ -92,6 +96,9 @@ const sentences = [
 ];
 
 const RightSentenceBoxes = forwardRef((props, ref) => {
+  
+  const [alignments] = useState(() => sentences.map(() => getAlignment()));
+
   const refs = useRef([]);
 
   useEffect(() => {
@@ -120,6 +127,9 @@ const RightSentenceBoxes = forwardRef((props, ref) => {
     getSentenceRef: (index) => refs.current[index],
   }));
 
+  const possibleSpans = ['a', 'b', 'c'];
+
+
   return (
     <div>
       {sentences.map((sentence, index) => (
@@ -128,27 +138,36 @@ const RightSentenceBoxes = forwardRef((props, ref) => {
           ref={(el) => (refs.current[index] = el)}
           className="sentence-box from-right"
           style={{
-            height: "90vh",
+            height: "90vh",            // altezza massima del riquadro
             display: "flex",
-            alignItems: "center",
-            justifyContent: "flex-start",
+            alignItems: "center",      // centra verticalmente il contenuto
             paddingLeft: "420px",
+            overflowX: "hidden",
+            overflowY: "hidden",
           }}
         >
           <div
             style={{
               maxWidth: "500px",
-              padding: "1.5rem",
+              maxHeight: "100%",        // non supera il contenitore
               backgroundColor: "rgba(255, 255, 255, 0.1)",
               border: "1px solid rgba(255,255,255,0.3)",
               backdropFilter: "blur(8px)",
               WebkitBackdropFilter: "blur(8px)",
-              fontSize: "1.2rem",
+              padding: "1.5rem",
+              alignItems: "center",
+              // alignItems: alignments[index].alignItems,
+              // justifyContent: alignments[index].justifyContent,
+              textAlign: alignments[index].textAlign,//"center", //alignments[index].textAlign,
+              fontSize: "2rem",// getFontSize(possibleSpans[Math.floor(Math.random() * possibleSpans.length)]),
+              display: "flex",
+              flexDirection: "column",
             }}
           >
             {sentence}
           </div>
         </div>
+
       ))}
     </div>
   );

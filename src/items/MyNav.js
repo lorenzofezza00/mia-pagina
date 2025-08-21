@@ -26,7 +26,7 @@ function MyNav() {
                 <NavDropdown.Item className="nav-dropdown-item" href="#/project/3.2">Screenshot Multi‑platform Application</NavDropdown.Item>
                 <NavDropdown.Item className="nav-dropdown-item" href="#/project/3.3">Real Time Domain Adaptation For Semantic Segmentation</NavDropdown.Item>
                 <NavDropdown.Item className="nav-dropdown-item" href="#/project/3.4">Exploring Sim‑to‑Real Transfer with Domain Randomization</NavDropdown.Item>
-                <NavDropdown.Item className="nav-dropdown-item" href="#/project/3.5"> Computational Intelligence</NavDropdown.Item>
+                <NavDropdown.Item className="nav-dropdown-item" href="#/project/3.5">Computational Intelligence</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item className="nav-dropdown-item" href="#/project/3.6">APSS Metrics for Fault Detection</NavDropdown.Item>
                 <NavDropdown.Item className="nav-dropdown-item" href="#/project/3.9">Temporal Diversity</NavDropdown.Item>

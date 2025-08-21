@@ -48,7 +48,8 @@ const ContactPage = () => {
               borderTop: `5px solid ${contact.color}`,
               backdropFilter: "blur(8px)",
               WebkitBackdropFilter: "blur(8px)",
-              padding: "2rem"
+              padding: "2rem",
+              borderRadius:0
            }}>
               <Card.Body>
                 <div style={{ fontSize: '2rem', color: contact.color }}>{contact.icon}</div>

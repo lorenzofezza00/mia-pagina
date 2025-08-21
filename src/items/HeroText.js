@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col';
 
 function HeroSection() {
   return (
-    <Col>
+    <Col style={{height: '100vh'}}>
       <Row className="w-100">
         <Col className="d-flex justify-content-end">
           <div style={{ textAlign: 'right', maxWidth: '600px' }}>
