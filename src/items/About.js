@@ -217,6 +217,9 @@ function ScrollMap({ sentence3Ref }) {
 
 function About() {
   const rightBoxesRef = useRef(null);
+  useEffect(() => {
+    window.scrollTo(0, 0); // forza lo scroll in alto
+  }, []);
 
   return (
     <Container fluid className="text-light" style={{ display: "flex" }}>

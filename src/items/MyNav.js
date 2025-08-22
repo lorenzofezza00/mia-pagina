@@ -22,16 +22,17 @@ function MyNav() {
             <NavDropdown title={<span>Projects</span>} id="basic-nav-dropdown">
                 <NavDropdown.Item className="nav-dropdown-item" href="#/project/3.0">All the projects</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item className="nav-dropdown-item" href="#/project/3.1">EZWallet</NavDropdown.Item>
-                <NavDropdown.Item className="nav-dropdown-item" href="#/project/3.2">Screenshot Multi‑platform Application</NavDropdown.Item>
-                <NavDropdown.Item className="nav-dropdown-item" href="#/project/3.3">Real Time Domain Adaptation For Semantic Segmentation</NavDropdown.Item>
-                <NavDropdown.Item className="nav-dropdown-item" href="#/project/3.4">Exploring Sim‑to‑Real Transfer with Domain Randomization</NavDropdown.Item>
-                <NavDropdown.Item className="nav-dropdown-item" href="#/project/3.5">Computational Intelligence</NavDropdown.Item>
+                <NavDropdown.Item className="nav-dropdown-item" href="https://github.com/lorenzofezza00/EZWallet">EZWallet</NavDropdown.Item>
+                <NavDropdown.Item className="nav-dropdown-item" href="https://github.com/lorenzofezza00/Screenshot-Application">Screenshot Multi‑platform Application</NavDropdown.Item>
+                <NavDropdown.Item className="nav-dropdown-item" href="https://github.com/lorenzofezza00/DA_Semantic_Segmentation">Real Time Domain Adaptation For Semantic Segmentation</NavDropdown.Item>
+                <NavDropdown.Item className="nav-dropdown-item" href="https://github.com/lorenzofezza00/project-sim2real-lorenzo-fezza">Exploring Sim‑to‑Real Transfer with Domain Randomization</NavDropdown.Item>
+                <NavDropdown.Item className="nav-dropdown-item" href="https://github.com/lorenzofezza00/CI_LABS">Computational Intelligence</NavDropdown.Item>
+                <NavDropdown.Item className="nav-dropdown-item" href="https://github.com/lorenzofezza00/Team-Management-Mobile-Application-public">Team Management Mobile Application</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item className="nav-dropdown-item" href="#/project/3.6">APSS Metrics for Fault Detection</NavDropdown.Item>
-                <NavDropdown.Item className="nav-dropdown-item" href="#/project/3.9">Temporal Diversity</NavDropdown.Item>
-                <NavDropdown.Item className="nav-dropdown-item" href="#/project/3.8">Multiple Fault Injection</NavDropdown.Item>
-                <NavDropdown.Item className="nav-dropdown-item" href="#/project/3.9">Event Based Cameras</NavDropdown.Item>
+                <NavDropdown.Item className="nav-dropdown-item" href="https://www.dfts.org/program.htm">APSS Metrics for Fault Detection</NavDropdown.Item>
+                <NavDropdown.Item className="nav-dropdown-item" href="#/project/3.0">Temporal Diversity</NavDropdown.Item>
+                <NavDropdown.Item className="nav-dropdown-item" href="#/project/3.0">Multiple Fault Injection</NavDropdown.Item>
+                <NavDropdown.Item className="nav-dropdown-item" href="#/project/3.0">Event Based Cameras</NavDropdown.Item>
             </NavDropdown>
 
             <Nav.Link href="#/contacts">Contacts</Nav.Link>

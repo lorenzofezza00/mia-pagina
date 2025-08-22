@@ -3,6 +3,12 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import HEZW from '../imgs/HomeEZW.png';
 import SMPR from '../imgs/SMPR.jpg'
+import DA from '../imgs/DA.png'
+import TMMA from '../imgs/TMMA.png'
+import HOP from '../imgs/hopper.jpg'
+import BD from '../imgs/fig_5_state.png'
+import APSS from '../imgs/APSS.png'
+import { FiMinus, FiSquare, FiX } from 'react-icons/fi'; // import icone
 
 const projects = [
   {
@@ -21,44 +27,51 @@ const projects = [
   },
   {
     title: "Real Time Domain Adaptation For Semantic Segmentation",
-    description: "Descrizione del progetto 3...",
-    image: "https://via.placeholder.com/200x400",
-    link: "#"
+    description: "This project investigates advanced techniques such as adversarial learning, data augmentation, FDA, and self-supervised strategies to reduce the domain gap and improve model performance.",
+    // This project explores the challenges of real-time Semantic Segmentation and how Domain Adaptation can help bridge the gap between different datasets. By combining adversarial training, data augmentation, image-to-image translation (FDA), and self-supervised learning, we aim to improve model generalization across domains. The work highlights both the progress achieved and the remaining challenges in closing the domain shift.
+    image: DA,
+    link: "https://github.com/lorenzofezza00/DA_Semantic_Segmentation"
   },
   {
     title: "Exploring Sim‑to‑Real Transfer with Domain Randomization",
-    description: "Descrizione del progetto 2...",
-    image: "https://via.placeholder.com/300x200",
-    link: "#"
+    description: "This project explores Proximal Policy Optimization (PPO) applied to custom Hopper environments, addressing the domain shift challenge in Reinforcement Learning. By testing policies across multiple domains and applying Domain Randomization techniques, the work investigates how to improve generalization in sim-to-real adaptation.",
+    image: HOP,
+    link: "https://github.com/lorenzofezza00/project-sim2real-lorenzo-fezza"
   },
   {
     title: "Computational Intelligence",
-    description: "Descrizione del progetto 2...",
-    image: "https://via.placeholder.com/300x200",
-    link: "#"
+    description: "This project implements the Quixo board game with a minimax-based strategy, exploring optimizations to balance computational cost and performance. The player consistently beats a random opponent but struggles against itself due to the depth–completeness trade-off: deeper searches are more accurate but computationally expensive, while shallower ones are faster but suboptimal.",
+    image: BD,
+    link: "https://github.com/lorenzofezza00/CI_LABS"
+  },
+  {
+    title: "Team Management Mobile Application",
+    description: "A complete task and team management platform featuring personal and team task tracking with progress bars, calendars, file sharing, comments, and history logs. The application offers smooth animations, a modern and intuitive interface, and camera support. Teams can manage members, share via links, track performance with analytics, and communicate seamlessly through the integrated group chat.",
+    image: TMMA,
+    link: "https://github.com/lorenzofezza00/Team-Management-Mobile-Application-public"
   },
   {
     title: "APSS Metrics for Fault Detection",
-    description: "Descrizione del progetto 2...",
-    image: "https://via.placeholder.com/300x200",
-    link: "#"
+    description: "This work investigates the reliability of neural networks under hardware-induced faults in image segmentation tasks. A novel detection method is proposed, based on four pixel-level metrics analyzing prediction patterns. Validated through fault injection on Fast-SCNN trained on Cityscapes, the approach achieves over 99% accuracy, matching state-of-the-art methods while removing the need for a golden mask.",
+    image: APSS,
+    link: "https://www.dfts.org/program.htm"
   },
   {
     title: "Temporal Diversity",
-    description: "Descrizione del progetto 2...",
-    image: "https://via.placeholder.com/300x200",
+    description: "Upcoming",
+    image: null,//"https://via.placeholder.com/300x200",
     link: "#"
   },
   {
     title: "Multiple Fault Injection",
-    description: "Descrizione del progetto 2...",
-    image: "https://via.placeholder.com/300x200",
+    description: "Upcoming",
+    image: null,
     link: "#"
   },
   {
     title: "Event Based Cameras",
-    description: "Descrizione del progetto 2...",
-    image: "https://via.placeholder.com/300x200",
+    description: "Upcoming",
+    image: null,
     link: "#"
   },
   
@@ -76,6 +89,7 @@ const getRandomOffset = () => {
   };
 };
 
+
 const ProjectCard = ({ project, isActive, offset }) => {
   const [isVertical, setIsVertical] = useState(false);
 
@@ -83,8 +97,7 @@ const ProjectCard = ({ project, isActive, offset }) => {
     const img = new Image();
     img.onload = () => {
       const ratio = img.naturalWidth / img.naturalHeight;
-      setIsVertical(ratio < 1.2); // verticale se quasi quadrata o taller che wide
-      console.log(project.title, img.naturalWidth, img.naturalHeight, ratio, ratio < 1.2 ? 'Verticale' : 'Orizzontale');
+      setIsVertical(ratio < 1.2);
     };
     img.src = project.image;
   }, [project.image]);
@@ -92,6 +105,10 @@ const ProjectCard = ({ project, isActive, offset }) => {
   return (
     <motion.div
       layout
+      drag={isActive ? "x,y" : false}
+      dragElastic={0.2}
+      dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+      whileDrag={{ scale: 1.05 }}
       animate={{
         x: isActive ? 0 : offset.x,
         y: isActive ? 0 : offset.y,
@@ -102,12 +119,13 @@ const ProjectCard = ({ project, isActive, offset }) => {
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
       style={{
         position: 'absolute',
-        borderRadius: '0',
+        borderRadius: '10px',
         overflow: 'hidden',
         backgroundColor: 'rgba(255,255,255,0.3)',
         border: "1px solid rgba(255,255,255,0.2)",
         backdropFilter: 'blur(8px)',
         padding: '1rem',
+        paddingTop: '3rem', // aggiunto per far spazio alla topbar
         color: 'white',
         display: 'flex',
         flexDirection: isVertical ? 'row' : 'column',
@@ -116,12 +134,32 @@ const ProjectCard = ({ project, isActive, offset }) => {
         width: 'auto',
         height: 'auto',
         maxWidth: '45vw',
-        maxHeight: project.title === "Screenshot Multi‑platform Application" ? '55vh' : '45vh', // qui
+        maxHeight: "60vh"
       }}
     >
+      {/* Top bar con icone in alto a destra */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        width: '100%',
+        height: '2rem', // altezza fissa
+        display: 'flex',
+        justifyContent: 'flex-end',
+        alignItems: 'center', // centra verticalmente
+        padding: '0 0.5rem',
+        backgroundColor: 'rgba(0,0,0,0.2)',
+        borderBottom: '1px solid rgba(255,255,255,0.3)',
+        zIndex: 200
+      }}>
+        <FiMinus color="white" size={18} style={{ cursor: 'pointer' }} />
+        <FiSquare color="white" size={18} style={{ cursor: 'pointer' }} />
+        <FiX color="white" size={18} style={{ cursor: 'pointer' }} />
+      </div>
+      {/* Image */}
       <div style={{
         flexShrink: 0,
-        display: 'flex',
+        display: project.description === "Upcoming" ? "none" : "flex",
         justifyContent: 'center',
         alignItems: 'center',
         overflow: 'hidden',
@@ -137,16 +175,35 @@ const ProjectCard = ({ project, isActive, offset }) => {
             maxHeight: isVertical ? '40vh' : 'none',
             maxWidth: isVertical ? 'none' : '40vw',
             objectFit: 'contain',
-            borderRadius: project.image === HEZW || project.image === HEZW ? '14px' : '0'
+            borderRadius: project.image === HEZW ? '14px' : '0',
           }}
         />
       </div>
-      <div style={{ flex: '1 1 auto', minWidth: 0 }}>
+
+      {/* Content */}
+      <div style={{ flex: '1 1 auto', minWidth: 0, marginTop: '1.5rem' }}>
         <h3>{project.title}</h3>
-        <p>{project.description}</p>
-        <Button variant="primary" href={project.link} target="_blank">
-          Visualize
-        </Button>
+        {project.description !== "Upcoming" ? (
+          <>
+            <p>{project.description}</p>
+            <Button variant="primary" href={project.link} target="_blank">
+              Visualize
+            </Button>
+          </>
+        ) : (
+          <span style={{
+            display: "inline-block",
+            padding: "0.4rem 0.8rem",
+            backgroundColor: "rgba(255,255,255,0.15)",
+            border: "1px solid rgba(255,255,255,0.3)",
+            borderRadius: "12px",
+            fontSize: "0.9rem",
+            fontWeight: "bold",
+            color: "white"
+          }}>
+            🚧 Coming Soon
+          </span>
+        )}
       </div>
     </motion.div>
   );
@@ -158,14 +215,22 @@ const Projects = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [offsets, setOffsets] = useState(projects.map(() => ({ x: 0, y: 0, scale: 0.9 })));
 
-  const handleScroll = (e) => {
-    const nextIndex = e.deltaY > 0
-      ? (currentIndex + 1) % projects.length
-      : (currentIndex - 1 + projects.length) % projects.length;
-    setCurrentIndex(nextIndex);
+  let accumulatedDelta = 0;
+  const SCROLL_STEP = 200;
 
-    // Aggiorna solo gli offset randomici quando scrolli
-    setOffsets(projects.map(() => getRandomOffset()));
+  const handleScroll = (e) => {
+    accumulatedDelta += e.deltaY;
+
+    if (Math.abs(accumulatedDelta) >= SCROLL_STEP) {
+      const nextIndex = accumulatedDelta > 0
+        ? (currentIndex + 1) % projects.length
+        : (currentIndex - 1 + projects.length) % projects.length;
+
+      setCurrentIndex(nextIndex);
+      setOffsets(projects.map(() => getRandomOffset()));
+
+      accumulatedDelta = 0;
+    }
   };
 
   useEffect(() => {
@@ -185,6 +250,7 @@ const Projects = () => {
         overflow: 'hidden'
       }}
     >
+      {/* Progetti */}
       {projects.map((project, index) => (
         <ProjectCard
           key={index}
@@ -193,6 +259,32 @@ const Projects = () => {
           offset={offsets[index]}
         />
       ))}
+
+      {/* Pallini in basso */}
+      <div style={{
+        position: 'absolute',
+        bottom: '20px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        display: 'flex',
+        gap: '10px',
+        zIndex: 500
+      }}>
+        {projects.map((_, index) => (
+          <span
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            style={{
+              width: '12px',
+              height: '12px',
+              borderRadius: '50%',
+              backgroundColor: index === currentIndex ? 'white' : 'rgba(255,255,255,0.4)',
+              cursor: 'pointer',
+              transition: 'background-color 0.3s'
+            }}
+          />
+        ))}
+      </div>
     </Container>
   );
 };

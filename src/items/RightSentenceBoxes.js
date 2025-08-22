@@ -1,9 +1,8 @@
 import React, { useEffect, useState, useRef, forwardRef, useImperativeHandle } from "react";
 import { Button } from "react-bootstrap";
 import "./IntroAnimations.css";
-import { FaMusic, FaStar } from "react-icons/fa"; 
+import { FaMusic, FaStar , FaProjectDiagram, FaDownload } from "react-icons/fa"; 
 import { getAlignment, getFontSize } from "./NewIntroText";
-
 
 const HighlightSentence = () => {
   const [floatingElements, setFloatingElements] = useState([]);
@@ -95,10 +94,9 @@ const sentences = [
   </>,
 ];
 
-const RightSentenceBoxes = forwardRef((props, ref) => {
-  
-  const [alignments] = useState(() => sentences.map(() => getAlignment()));
 
+const RightSentenceBoxes = forwardRef((props, ref) => {
+  const [alignments] = useState(() => sentences.map(() => getAlignment()));
   const refs = useRef([]);
 
   useEffect(() => {
@@ -122,13 +120,11 @@ const RightSentenceBoxes = forwardRef((props, ref) => {
     };
   }, []);
 
-  // Esponiamo refs al genitore
   useImperativeHandle(ref, () => ({
     getSentenceRef: (index) => refs.current[index],
   }));
 
-  const possibleSpans = ['a', 'b', 'c'];
-
+  const possibleSpans = ["a", "b", "c"];
 
   return (
     <div>
@@ -138,9 +134,9 @@ const RightSentenceBoxes = forwardRef((props, ref) => {
           ref={(el) => (refs.current[index] = el)}
           className="sentence-box from-right"
           style={{
-            height: "90vh",            // altezza massima del riquadro
+            height: "90vh",
             display: "flex",
-            alignItems: "center",      // centra verticalmente il contenuto
+            alignItems: "center",
             paddingLeft: "420px",
             overflowX: "hidden",
             overflowY: "hidden",
@@ -149,28 +145,77 @@ const RightSentenceBoxes = forwardRef((props, ref) => {
           <div
             style={{
               maxWidth: "500px",
-              maxHeight: "100%",        // non supera il contenitore
+              maxHeight: "100%",
               backgroundColor: "rgba(255, 255, 255, 0.1)",
               border: "1px solid rgba(255,255,255,0.3)",
               backdropFilter: "blur(8px)",
               WebkitBackdropFilter: "blur(8px)",
               padding: "1.5rem",
-              alignItems: "center",
-              // alignItems: alignments[index].alignItems,
-              // justifyContent: alignments[index].justifyContent,
-              textAlign: alignments[index].textAlign,//"center", //alignments[index].textAlign,
-              fontSize: "2rem",// getFontSize(possibleSpans[Math.floor(Math.random() * possibleSpans.length)]),
               display: "flex",
               flexDirection: "column",
+              alignItems: "center",
+              textAlign: alignments[index].textAlign,
+              fontSize: "2rem",
             }}
           >
             {sentence}
           </div>
         </div>
-
       ))}
+
+      {/* Bottoni finali */}
+      <div
+        style={{
+          position: "relative",
+          zIndex: 10,
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          paddingLeft: "420px",
+          gap: "1rem",
+          marginTop: "-15vh",
+        }}
+      >
+        <a
+          href="#/project/3.0"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "0.4rem",
+            padding: "0.5rem 1rem",
+            backgroundColor: "rgba(255,255,255,0.1)",
+            border: "1px solid rgba(255,255,255,0.3)",
+            borderRadius: "6px",
+            textDecoration: "none",
+            color: "white",
+            fontSize: "1.2rem",
+          }}
+        >
+          <FaProjectDiagram /> View Projects
+        </a>
+
+        <a
+          href="/LorenzoFezza_CV.pdf"
+          download
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "0.4rem",
+            padding: "0.5rem 1rem",
+            backgroundColor: "rgba(255,255,255,0.1)",
+            border: "1px solid rgba(255,255,255,0.3)",
+            borderRadius: "6px",
+            textDecoration: "none",
+            color: "white",
+            fontSize: "1.2rem",
+          }}
+        >
+          <FaDownload /> Resume
+        </a>
+      </div>
     </div>
   );
 });
+
 
 export default RightSentenceBoxes;

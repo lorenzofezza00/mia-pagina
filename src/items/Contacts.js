@@ -49,7 +49,7 @@ const ContactPage = () => {
               backdropFilter: "blur(8px)",
               WebkitBackdropFilter: "blur(8px)",
               padding: "2rem",
-              borderRadius:0
+              borderRadius:"10px"
            }}>
               <Card.Body>
                 <div style={{ fontSize: '2rem', color: contact.color }}>{contact.icon}</div>
