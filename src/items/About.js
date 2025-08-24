@@ -169,12 +169,22 @@ function ScrollMap({ sentence3Ref }) {
   }, [t]);
 
   // Render map
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768 && window.innerHeight > window.innerWidth);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <div
       style={{
         position: "fixed",
-        width: "50vw",
-        height: "80vh",
+        top: "10vh",
+        width: isMobile ? "100%" : "50vw",
+        height: isMobile ? "60vh" : "80vh",
         zIndex: 999,
         overflow: "hidden",
         WebkitMaskImage: `
@@ -214,7 +224,6 @@ function ScrollMap({ sentence3Ref }) {
 }
 
 
-
 function About() {
   const rightBoxesRef = useRef(null);
   useEffect(() => {
@@ -222,15 +231,19 @@ function About() {
   }, []);
 
   return (
-    <Container fluid className="text-light" style={{ display: "flex" }}>
-      <div style={{ width: "50vw", position: "fixed" }}>
+    <Container 
+      fluid 
+      className="text-light about-layout"
+    >
+      <div className="map-container">
         <ScrollMap sentence3Ref={rightBoxesRef} />
       </div>
-      <div style={{ flex: 1, marginLeft: "25vw" }}>
+      <div className="boxes-container">
         <RightSentenceBoxes ref={rightBoxesRef} />
       </div>
     </Container>
   );
 }
+
 
 export default About

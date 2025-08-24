@@ -137,11 +137,13 @@ const RightSentenceBoxes = forwardRef((props, ref) => {
             height: "90vh",
             display: "flex",
             alignItems: "center",
-            paddingLeft: "420px",
+            /* ❌ rimuovi questo */
+            /* paddingLeft: "420px", */
             overflowX: "hidden",
             overflowY: "hidden",
           }}
         >
+
           <div
             style={{
               maxWidth: "500px",
@@ -171,7 +173,8 @@ const RightSentenceBoxes = forwardRef((props, ref) => {
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
-          paddingLeft: "420px",
+          /* ❌ rimuovi questo */
+          /* paddingLeft: "420px", */
           gap: "1rem",
           marginTop: "-15vh",
         }}

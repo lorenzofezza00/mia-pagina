@@ -215,10 +215,11 @@ const Projects = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [offsets, setOffsets] = useState(projects.map(() => ({ x: 0, y: 0, scale: 0.9 })));
 
+  // Per desktop
   let accumulatedDelta = 0;
   const SCROLL_STEP = 200;
 
-  const handleScroll = (e) => {
+  const handleWheel = (e) => {
     accumulatedDelta += e.deltaY;
 
     if (Math.abs(accumulatedDelta) >= SCROLL_STEP) {
@@ -233,9 +234,41 @@ const Projects = () => {
     }
   };
 
+  // Per mobile / touch
+  let touchStartY = null;
+
+  const handleTouchStart = (e) => {
+    touchStartY = e.touches[0].clientY;
+  };
+
+  const handleTouchMove = (e) => {
+    if (touchStartY === null) return;
+
+    const touchEndY = e.touches[0].clientY;
+    const delta = touchStartY - touchEndY;
+
+    if (Math.abs(delta) > SCROLL_STEP / 2) { // soglia swipe più sensibile
+      const nextIndex = delta > 0
+        ? (currentIndex + 1) % projects.length
+        : (currentIndex - 1 + projects.length) % projects.length;
+
+      setCurrentIndex(nextIndex);
+      setOffsets(projects.map(() => getRandomOffset()));
+
+      touchStartY = null; // reset per prossimo swipe
+    }
+  };
+
   useEffect(() => {
-    window.addEventListener('wheel', handleScroll);
-    return () => window.removeEventListener('wheel', handleScroll);
+    window.addEventListener('wheel', handleWheel);
+    window.addEventListener('touchstart', handleTouchStart);
+    window.addEventListener('touchmove', handleTouchMove);
+
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
+    };
   }, [currentIndex]);
 
   return (
@@ -250,7 +283,6 @@ const Projects = () => {
         overflow: 'hidden'
       }}
     >
-      {/* Progetti */}
       {projects.map((project, index) => (
         <ProjectCard
           key={index}
@@ -260,7 +292,7 @@ const Projects = () => {
         />
       ))}
 
-      {/* Pallini in basso */}
+      {/* Pallini */}
       <div style={{
         position: 'absolute',
         bottom: '20px',

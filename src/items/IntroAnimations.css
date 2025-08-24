@@ -1,16 +1,17 @@
+/* Animazioni e highlight */
 .sentence-box {
   opacity: 0;
-  transform: translateX(50px); /* inizialmente spostato a destra */
+  transform: translateX(50px);
   transition: all 0.8s ease-out;
 }
 
 .sentence-box.left {
-  transform: translateX(-50px); /* inizialmente spostato a sinistra */
+  transform: translateX(-50px);
 }
 
 .sentence-box.visible {
   opacity: 1;
-  transform: translateX(0); /* torna in posizione */
+  transform: translateX(0);
 }
 
 .highlight-animate .floating {
@@ -25,5 +26,43 @@
   100% {
     transform: translate(var(--dx), var(--dy)) rotate(360deg);
     opacity: 0;
+  }
+}
+
+/* Layout desktop / landscape */
+.about-layout {
+  display: flex;
+  flex-direction: row;
+}
+
+.map-container {
+  width: 50vw;
+  position: fixed;
+  height: 100vh;
+}
+
+.boxes-container {
+  flex: 1;
+  margin-left: 50vw; /* spazio lasciato dalla mappa */
+}
+/* Layout mobile verticale (smartphone portrait) */
+@media (max-width: 768px) and (orientation: portrait) {
+  .about-layout {
+    flex-direction: column;
+  }
+
+  .map-container {
+    position: fixed;      /* rimane fissa */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50vh;         /* metà schermo in altezza */
+    z-index: 999;
+  }
+
+  .boxes-container {
+    margin-left: 0;
+    width: 100%;
+    margin-top: 50vh;     /* lascia spazio per la mappa fissa */
   }
 }
