@@ -84,10 +84,10 @@ export default function NewIntro() {
             .container-fluid > div {
               grid-column: auto !important;
               min-height: auto !important;
-              font-size: 1rem !important;
-              padding: 1.2rem !important;
+              padding: 1rem !important;
             }
           }
+
         `}
       </style>
     </div>
