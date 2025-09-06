@@ -1,7 +1,8 @@
 import { Container } from "react-bootstrap";
 import HeroSection from "./HeroText";
 import SentenceBoxes from "./IntroText";
-import NewIntro from "./NewIntroText";
+// import NewIntro from "./NewIntroText";
+import NewIntro from "./DraggableIntroText";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -42,7 +43,7 @@ function Home() {
         <Container
           fluid
           className="text-light"
-          style={{ marginTop: "25vh", pointerEvents: "none" }} 
+          style={{ marginTop: "25vh"}}//, pointerEvents: "none" }} 
           // così gli elementi sotto non interferiscono con i click
         >
           <HeroSection />
