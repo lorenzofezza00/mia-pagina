@@ -17,7 +17,12 @@ function MyNav() {
             <Nav.Link href="#/home">Home</Nav.Link>
             <Nav.Link href="#/about">About</Nav.Link>
             {/* In about ci metto anche instagram, linkedin, ecc ecc */}
-            <Nav.Link href="/LorenzoFezza_CV.pdf" download>Resume</Nav.Link>
+            <Nav.Link 
+              href={`${process.env.PUBLIC_URL}/LorenzoFezza_CV.pdf`} 
+              download="Lorenzo_Fezza_CV.pdf"
+            >
+              Resume
+            </Nav.Link>
 
             <NavDropdown title={<span>Projects</span>} id="basic-nav-dropdown">
                 <NavDropdown.Item className="nav-dropdown-item" href="#/project/3.0">All the projects</NavDropdown.Item>
