@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import "./IntroAnimations.css";
-import BackgroundNetwork from "./BackgroundNetwork";
+import BackgroundNetwork from "./layout/BackgroundNetwork";
 
 const sentences = [
   <>

@@ -1,8 +1,8 @@
 import { Container } from "react-bootstrap";
-import HeroSection from "./HeroText";
-import SentenceBoxes from "./IntroText";
+import HeroSection from "../components/HeroText";
+import SentenceBoxes from "../components/IntroText";
 // import NewIntro from "./NewIntroText";
-import NewIntro from "./DraggableIntroText";
+import NewIntro from "../components/DraggableIntroText";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 

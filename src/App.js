@@ -2,14 +2,17 @@ import React from 'react';
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { Container } from 'react-bootstrap';
 
-import MyNav from './items/MyNav';
-import BackgroundNetwork from './items/BackgroundNetwork';
-import TrailSquares from './items/TrailSquares';
-import Home from './items/Home';
-import About from './items/About';
-import Projects from './items/Projects';
-import ContactPage from './items/Contacts';
-import NeuralNetVisualizer from './items/Net'
+// Layout Components
+import MyNav from './components/layout/MyNav';
+import BackgroundNetwork from './components/layout/BackgroundNetwork';
+import TrailSquares from './components/layout/TrailSquares';
+
+// Pages
+import Home from './pages/Home';
+import About from './pages/About';
+import Projects from './pages/Projects';
+import ContactPage from './pages/Contacts';
+import NeuralNetVisualizer from './pages/Net';
 
 function App() {
   return (

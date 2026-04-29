@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, forwardRef, useImperativeHandle } f
 import { Button } from "react-bootstrap";
 import "./IntroAnimations.css";
 import { FaMusic, FaStar , FaProjectDiagram, FaDownload } from "react-icons/fa"; 
-import { getAlignment, getFontSize } from "./NewIntroText";
+import { getAlignment, getFontSize } from "./DraggableIntroText";
 
 const HighlightSentence = () => {
   const [floatingElements, setFloatingElements] = useState([]);
