@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/[https://lorenzofezza00.github.io/mia-pagina](https://lorenzofezza00.github.io/mia-pagina)/static/css/main.5366120a.css",
-    "main.js": "/[https://lorenzofezza00.github.io/mia-pagina](https://lorenzofezza00.github.io/mia-pagina)/static/js/main.93a223bc.js",
-    "static/js/206.1d88f572.chunk.js": "/[https://lorenzofezza00.github.io/mia-pagina](https://lorenzofezza00.github.io/mia-pagina)/static/js/206.1d88f572.chunk.js",
-    "static/media/APSS.png": "/[https://lorenzofezza00.github.io/mia-pagina](https://lorenzofezza00.github.io/mia-pagina)/static/media/APSS.a6f299be06747fa1f113.png",
-    "static/media/DA.png": "/[https://lorenzofezza00.github.io/mia-pagina](https://lorenzofezza00.github.io/mia-pagina)/static/media/DA.221a4d1fb01ec417c2c8.png",
-    "static/media/HomeEZW.png": "/[https://lorenzofezza00.github.io/mia-pagina](https://lorenzofezza00.github.io/mia-pagina)/static/media/HomeEZW.cd08a5bcb19cc30b1399.png",
-    "static/media/TMMA.png": "/[https://lorenzofezza00.github.io/mia-pagina](https://lorenzofezza00.github.io/mia-pagina)/static/media/TMMA.2110d5bb2f5ef3d05734.png",
-    "static/media/SuperWoobly-8MJlz.ttf": "/[https://lorenzofezza00.github.io/mia-pagina](https://lorenzofezza00.github.io/mia-pagina)/static/media/SuperWoobly-8MJlz.a925bc69c4414a315372.ttf",
-    "static/media/SMPR.jpg": "/[https://lorenzofezza00.github.io/mia-pagina](https://lorenzofezza00.github.io/mia-pagina)/static/media/SMPR.0d41ea1d1fe63651e1af.jpg",
-    "static/media/hopper.jpg": "/[https://lorenzofezza00.github.io/mia-pagina](https://lorenzofezza00.github.io/mia-pagina)/static/media/hopper.7596cc4bf06f3d89137e.jpg",
-    "static/media/fig_5_state.png": "/[https://lorenzofezza00.github.io/mia-pagina](https://lorenzofezza00.github.io/mia-pagina)/static/media/fig_5_state.7dd8b7150fb3268d6169.png",
-    "index.html": "/[https://lorenzofezza00.github.io/mia-pagina](https://lorenzofezza00.github.io/mia-pagina)/index.html"
+    "main.css": "/mia-pagina/static/css/main.dd958413.css",
+    "main.js": "/mia-pagina/static/js/main.947673bc.js",
+    "static/js/206.1d88f572.chunk.js": "/mia-pagina/static/js/206.1d88f572.chunk.js",
+    "static/media/APSS.png": "/mia-pagina/static/media/APSS.a6f299be06747fa1f113.png",
+    "static/media/DA.png": "/mia-pagina/static/media/DA.221a4d1fb01ec417c2c8.png",
+    "static/media/HomeEZW.png": "/mia-pagina/static/media/HomeEZW.cd08a5bcb19cc30b1399.png",
+    "static/media/TMMA.png": "/mia-pagina/static/media/TMMA.2110d5bb2f5ef3d05734.png",
+    "static/media/SuperWoobly-8MJlz.ttf": "/mia-pagina/static/media/SuperWoobly-8MJlz.a925bc69c4414a315372.ttf",
+    "static/media/SMPR.jpg": "/mia-pagina/static/media/SMPR.0d41ea1d1fe63651e1af.jpg",
+    "static/media/hopper.jpg": "/mia-pagina/static/media/hopper.7596cc4bf06f3d89137e.jpg",
+    "static/media/fig_5_state.png": "/mia-pagina/static/media/fig_5_state.7dd8b7150fb3268d6169.png",
+    "index.html": "/mia-pagina/index.html"
   },
   "entrypoints": [
-    "static/css/main.5366120a.css",
-    "static/js/main.93a223bc.js"
+    "static/css/main.dd958413.css",
+    "static/js/main.947673bc.js"
   ]
 }
