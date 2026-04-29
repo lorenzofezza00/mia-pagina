@@ -198,8 +198,10 @@ const RightSentenceBoxes = forwardRef((props, ref) => {
         </a>
 
         <a
-          href="/LorenzoFezza_CV.pdf"
-          download
+          href={`${process.env.PUBLIC_URL}/LorenzoFezza_CV.pdf`}
+          download="Lorenzo_Fezza_CV.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
           style={{
             display: "flex",
             alignItems: "center",
